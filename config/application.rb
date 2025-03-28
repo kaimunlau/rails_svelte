@@ -26,13 +26,14 @@ module InertiaRailsSvelteShadcnTemplate
     #
     ## Disable unnecessary files when generating
     config.generators do |g|
-      g.helper false
-      g.assets false
-      g.view_specs false
-      g.helper_specs false
-      g.routing_specs false
-      g.test_framework nil
-      g.fixture_replacement nil
+      g.helper false               # No helper files
+      g.assets false               # No CSS/JS assets
+      g.view_specs false           # No view tests
+      g.helper_specs false         # No helper tests
+      g.routing_specs false        # No routing tests
+      g.test_framework nil         # No test framework
+      g.fixture_replacement nil    # No fixtures
+      g.template_engine nil        # No views/templates
     end
   end
 end
