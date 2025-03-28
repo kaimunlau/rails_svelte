@@ -23,5 +23,16 @@ module InertiaRailsSvelteShadcnTemplate
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    #
+    ## Disable unnecessary files when generating
+    config.generators do |g|
+      g.helper false
+      g.assets false
+      g.view_specs false
+      g.helper_specs false
+      g.routing_specs false
+      g.test_framework nil
+      g.fixture_replacement nil
+    end
   end
 end
