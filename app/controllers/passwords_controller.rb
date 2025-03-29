@@ -3,6 +3,7 @@ class PasswordsController < ApplicationController
   before_action :set_user_by_token, only: %i[ edit update ]
 
   def new
+    render inertia: "passwords/new"
   end
 
   def create
@@ -14,13 +15,14 @@ class PasswordsController < ApplicationController
   end
 
   def edit
+    render inertia: "passwords/edit", props: { token: params[:token] }
   end
 
   def update
     if @user.update(params.permit(:password, :password_confirmation))
       redirect_to login_path, notice: "Password has been reset."
     else
-      redirect_to edit_password_path(params[:token]), alert: "Passwords did not match."
+      redirect_to edit_password_path(params[:token]), inertia: { errors: @user.errors }
     end
   end
 

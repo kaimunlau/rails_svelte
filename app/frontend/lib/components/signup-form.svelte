@@ -29,17 +29,17 @@
 				<div class="grid gap-2">
 					<Label for="email_address">Email</Label>
 					<Input id="email_address" type="email" placeholder="m@example.com" required bind:value={$form.email_address} />
-					<InputError>{$form.errors.email_address}</InputError>
+					<InputError errors={$form.errors.email_address} />
 				</div>
 				<div class="grid gap-2">
 					<Label for="password">Password</Label>
 					<Input id="password" type="password" required bind:value={$form.password}/>
-					<InputError>{$form.errors.password}</InputError>
+					<InputError errors={$form.errors.password} />
 				</div>
         <div class="grid gap-2">
 					<Label for="password_confirmation">Password Confirmation</Label>
 					<Input id="password_confirmation" type="password" required bind:value={$form.password_confirmation}/>
-					<InputError>{$form.errors.password_confirmation}</InputError>
+					<InputError errors={$form.errors.password_confirmation} />
 				</div>
 				<Button type="submit" class="w-full">Sign up</Button>
 			</div>

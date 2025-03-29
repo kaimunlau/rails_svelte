@@ -7,20 +7,19 @@
 	import { Link, useForm } from "@inertiajs/svelte";
 
   const form = useForm({
-    email_address: null,
-    password: null,
+    email_address: null
   })
 
   function submit(e) {
     e.preventDefault()
-    $form.post('/login')
+    $form.post('/passwords')
   }
 </script>
 
 <Card.Root class="mx-auto max-w-sm w-full">
 	<Card.Header>
-		<Card.Title class="text-2xl">Log in</Card.Title>
-		<Card.Description>Enter your email below to login to your account</Card.Description>
+		<Card.Title class="text-2xl">Forgot password?</Card.Title>
+		<Card.Description>Enter your email below to receive a password reset link</Card.Description>
 	</Card.Header>
 	<Card.Content>
 		<form onsubmit={submit}>
@@ -30,19 +29,11 @@
 					<Input id="email_address" type="email" placeholder="m@example.com" required bind:value={$form.email_address} />
 					<InputError errors={$form.errors.email_address} />
 				</div>
-				<div class="grid gap-2">
-					<div class="flex items-center">
-						<Label for="password">Password</Label>
-						<Link href="/passwords/new" class="ml-auto inline-block text-sm underline"> Forgot your password? </Link>
-					</div>
-					<Input id="password" type="password" required bind:value={$form.password}/>
-					<InputError errors={$form.errors.password} />
-				</div>
-				<Button type="submit" class="w-full">Log in</Button>
+				<Button type="submit" class="w-full">Send password reset link</Button>
 			</div>
 			<div class="mt-4 text-center text-sm">
-				Don't have an account?
-				<Link href="/signup" class="underline"> Sign up </Link>
+				Back to
+        <Link href="/login" class="underline"> Log in </Link>
 			</div>
 		</form>
 	</Card.Content>
