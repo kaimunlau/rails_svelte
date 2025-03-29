@@ -5,7 +5,7 @@ class RegistrationsController < ApplicationController
     if authenticated?
       redirect_to root_path, flash: { alert: "You are already signed in." }
     else
-      render inertia: "registrations/new"
+      render inertia: "registrations/signup"
     end
   end
 
