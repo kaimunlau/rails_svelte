@@ -1,31 +1,82 @@
 <script>
   // grab page props from inertia
   import { page, Link, router } from '@inertiajs/svelte';
-  import Button from "$lib/components/ui/button/button.svelte";
   import Logo from "$lib/components/logo.svelte";
+  import { CircleUserRound, Menu, LogOut } from "@lucide/svelte";
+  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
+  import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
+  import { cn } from "$lib/utils.js";
 
   function handleLogout(event) {
     event.preventDefault();
     router.delete('/logout')
   }
+
+  const links = [
+    { href: "#", label: "About" },
+    { href: "#", label: "Contact" },
+    { href: "#", label: "Blog" }
+  ]
+
+  const currentUser = $derived($page.props?.user)
 </script>
 
 <nav>
   <div class="flex items-center justify-between p-4 px-10 border-b">
-    <Link href="/">
-      <Logo class="h-10 w-42 text-primary" />
-    </Link>
-    {#if $page.props?.user}
-      <Button variant="outline" onclick={handleLogout}>Log out</Button>
-    {:else}
-      <div class="gap-2">
-        <Link href="/login">
-          <Button variant="outline">Log in</Button>
-        </Link>
-        <Link href="/signup">
-          <Button>Sign up</Button>
-        </Link>
+    <div class="flex items-center gap-8">
+      <Link href="/">
+        <Logo class="h-10 w-42 text-primary" />
+      </Link>
+      <div class="hidden md:flex items-center">
+        {#each links as link}
+          <Link href={link.href} class={cn(buttonVariants({ variant: "ghost" }), "rounded-full text-muted-foreground")}>{link.label}</Link>
+        {/each}
       </div>
+    </div>
+    {#if currentUser}
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger class={cn(buttonVariants({ variant: "outline" }), "rounded-full px-2.5 gap-1")}>
+          <Menu />  
+          <CircleUserRound />
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content class="w-56" align="end" >
+          <DropdownMenu.Group>
+            <DropdownMenu.GroupHeading>
+              <div class="text-xs font-normal text-muted-foreground">Logged in as</div>
+              <div class="text-sm font-semibold">
+                {$page.props.user.email_address}
+              </div>
+            </DropdownMenu.GroupHeading>
+            <DropdownMenu.Separator />
+            <DropdownMenu.Item onclick={handleLogout}>
+              <LogOut class="mr-2 size-4" />
+              <span>Log out</span>
+            </DropdownMenu.Item>
+          </DropdownMenu.Group>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
+    {:else}
+      <!-- Mobile -->
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger class={cn(buttonVariants({ variant: "outline" }), "rounded-full px-2.5 gap-1")}>
+          <Menu />  
+          <CircleUserRound />
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content class="w-56" align="end" >
+          <DropdownMenu.Group>
+            <DropdownMenu.Item class="font-medium" onclick={() => router.visit("/signup")}>Sign up</DropdownMenu.Item>
+            <DropdownMenu.Item onclick={() => router.visit("/login")}>Log in</DropdownMenu.Item>
+          </DropdownMenu.Group>
+          <div class="md:hidden">
+            <DropdownMenu.Separator />
+            <DropdownMenu.Group>
+              {#each links as link}
+                <DropdownMenu.Item onclick={() => router.visit(link.href)}>{link.label}</DropdownMenu.Item>
+              {/each}
+            </DropdownMenu.Group>
+          </div>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
     {/if}
   </div>
 </nav>

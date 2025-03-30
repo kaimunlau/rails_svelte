@@ -7,9 +7,9 @@
 	import { Link, useForm } from "@inertiajs/svelte";
 
   const form = useForm({
-    email_address: "m@mail.com",
-    password: "secret",
-    password_confirmation: "secret",
+    email_address: null,
+    password: null,
+    password_confirmation: null,
   })
 
   function submit(e) {
