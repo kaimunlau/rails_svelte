@@ -2,7 +2,7 @@
   // grab page props from inertia
   import { page, Link, router } from '@inertiajs/svelte';
   import Logo from "$lib/components/logo.svelte";
-  import { CircleUserRound, Menu, LogOut } from "@lucide/svelte";
+  import { UserCircle, List, SignOut } from "phosphor-svelte";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
   import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
   import { cn } from "$lib/utils.js";
@@ -36,8 +36,8 @@
     {#if currentUser}
       <DropdownMenu.Root>
         <DropdownMenu.Trigger class={cn(buttonVariants({ variant: "outline" }), "rounded-full px-2.5 gap-1")}>
-          <Menu />  
-          <CircleUserRound />
+          <List />  
+          <UserCircle />
         </DropdownMenu.Trigger>
         <DropdownMenu.Content class="w-56" align="end" >
           <DropdownMenu.Group>
@@ -49,7 +49,7 @@
             </DropdownMenu.GroupHeading>
             <DropdownMenu.Separator />
             <DropdownMenu.Item onclick={handleLogout}>
-              <LogOut class="mr-2 size-4" />
+              <SignOut class="mr-2 size-4" />
               <span>Log out</span>
             </DropdownMenu.Item>
           </DropdownMenu.Group>
@@ -59,8 +59,8 @@
       <!-- Mobile -->
       <DropdownMenu.Root>
         <DropdownMenu.Trigger class={cn(buttonVariants({ variant: "outline" }), "rounded-full px-2.5 gap-1")}>
-          <Menu />  
-          <CircleUserRound />
+          <List />  
+          <UserCircle />
         </DropdownMenu.Trigger>
         <DropdownMenu.Content class="w-56" align="end" >
           <DropdownMenu.Group>

@@ -1,7 +1,7 @@
 <script>
 	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
-	import Check from "@lucide/svelte/icons/check";
-	import Minus from "@lucide/svelte/icons/minus";
+	import Check from "phosphor-svelte/lib/Check";
+  import Minus from "phosphor-svelte/lib/Minus";
 	import { cn } from "$lib/utils.js";
 	let {
 		ref = $bindable(null),
