@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_to after_authentication_url, flash: { notice: "You have been signed in." }
     else
       flash[:alert] = "Invalid email or password."
-      redirect_to login_path, inertia: { errors: { email_address: "Invalid email or password." } }
+      redirect_to login_path, inertia: { errors: { email_address: [ "Invalid email or password." ] } }
     end
   end
 
