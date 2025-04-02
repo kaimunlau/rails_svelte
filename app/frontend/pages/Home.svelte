@@ -60,7 +60,7 @@
   <div class="bg-muted border-b">
     <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8 border-l border-r border-dashed pt-40 pb-50">
       <h1 class="text-4xl tracking-tighter text-balance max-lg:font-medium max-sm:px-4 sm:text-5xl lg:text-6xl">The Svelte Starter Template for Ruby on Rails</h1>
-      <p class="opacity-80 mt-4">This is a starter template for building Svelte applications with Ruby on Rails, Inertia.js, and Shadcn components.</p>
+      <p class="opacity-80 mt-4">This is a starter template for Rails devs wanting to get started with Svelte without building everything from scratch.</p>
       <div class="mt-8">
         <Link href={githubUrl} class={buttonVariants({ variant: "default" })}>
           <GithubLogo weight="fill"/>
