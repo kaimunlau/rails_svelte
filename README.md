@@ -2,6 +2,10 @@
 
 This is a starter template for Rails developers who want to integrate Svelte into their applications without setting everything up from scratch. It provides a structured foundation with essential tools and libraries for building modern, reactive UIs within a Rails ecosystem.
 
+![localhost_3100_login (1)](https://github.com/user-attachments/assets/e3d98e5c-6e4b-4d64-a5d3-e31209459f07)
+
+
+
 ## Features
 
 - **[Svelte](https://svelte.dev/)** - A modern JavaScript framework for building user interfaces.
