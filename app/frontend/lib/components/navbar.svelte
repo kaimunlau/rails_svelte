@@ -6,10 +6,11 @@
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
   import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
   import { cn } from "$lib/utils.js";
+  import { rootPath, loginPath, signupPath, logoutPath } from "@/routes"
 
   function handleLogout(event) {
     event.preventDefault();
-    router.delete('/logout')
+    router.delete(logoutPath())
   }
 
   const links = [
@@ -64,8 +65,8 @@
         </DropdownMenu.Trigger>
         <DropdownMenu.Content class="w-56" align="end" >
           <DropdownMenu.Group>
-            <DropdownMenu.Item class="font-medium" onclick={() => router.visit("/signup")}>Sign up</DropdownMenu.Item>
-            <DropdownMenu.Item onclick={() => router.visit("/login")}>Log in</DropdownMenu.Item>
+            <DropdownMenu.Item class="font-medium" onclick={() => router.visit(signupPath())}>Sign up</DropdownMenu.Item>
+            <DropdownMenu.Item onclick={() => router.visit(loginPath())}>Log in</DropdownMenu.Item>
           </DropdownMenu.Group>
           <div class="md:hidden">
             <DropdownMenu.Separator />

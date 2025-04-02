@@ -5,6 +5,7 @@
 	import { InputError } from "$lib/components/ui/input-error/index.js";
 	import { Label } from "$lib/components/ui/label/index.js";
 	import { Link, useForm } from "@inertiajs/svelte";
+	import { loginPath, signupPath, newPasswordPath } from "@/routes"
 
   const form = useForm({
     email_address: null,
@@ -13,7 +14,7 @@
 
   function submit(e) {
     e.preventDefault()
-    $form.post('/login')
+    $form.post(loginPath())
   }
 </script>
 
@@ -33,7 +34,7 @@
 				<div class="grid gap-2">
 					<div class="flex items-center">
 						<Label for="password">Password</Label>
-						<Link href="/passwords/new" class="ml-auto inline-block text-sm underline"> Forgot your password? </Link>
+						<Link href={newPasswordPath()} class="ml-auto inline-block text-sm underline"> Forgot your password? </Link>
 					</div>
 					<Input id="password" type="password" required bind:value={$form.password}/>
 					<InputError errors={$form.errors.password} />
@@ -42,7 +43,7 @@
 			</div>
 			<div class="mt-4 text-center text-sm">
 				Don't have an account?
-				<Link href="/signup" class="underline"> Sign up </Link>
+				<Link href={signupPath()} class="underline"> Sign up </Link>
 			</div>
 		</form>
 	</Card.Content>

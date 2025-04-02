@@ -5,6 +5,7 @@
 	import { InputError } from "$lib/components/ui/input-error/index.js";
 	import { Label } from "$lib/components/ui/label/index.js";
 	import { Link, useForm, page } from "@inertiajs/svelte";
+	import { passwordPath } from "@/routes"
 
   const form = useForm({
     password: null,
@@ -13,7 +14,8 @@
 
   function submit(e) {
     e.preventDefault()
-    $form.put(`/passwords/${$page.props.token}`)
+    // $form.put(`/passwords/${$page.props.token}`)
+		$form.put(passwordPath($page.props.token))
   }
 </script>
 

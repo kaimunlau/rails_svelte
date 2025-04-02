@@ -5,6 +5,7 @@
 	import { InputError } from "$lib/components/ui/input-error/index.js";
 	import { Label } from "$lib/components/ui/label/index.js";
 	import { Link, useForm } from "@inertiajs/svelte";
+	import { signupPath, loginPath } from "@/routes"
 
   const form = useForm({
     email_address: null,
@@ -14,7 +15,7 @@
 
   function submit(e) {
     e.preventDefault()
-    $form.post('/signup')
+    $form.post(signupPath())
   }
 </script>
 
@@ -45,7 +46,7 @@
 			</div>
 			<div class="mt-4 text-center text-sm">
 				Already have an account?
-				<Link href="/login" class="underline"> Log in </Link>
+				<Link href={loginPath()} class="underline"> Log in </Link>
 			</div>
 		</form>
 	</Card.Content>
