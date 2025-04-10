@@ -1,5 +1,5 @@
 <script>
-  import Layout from '../layouts/Layout.svelte';
+  import Layout from '../layouts/layout.svelte';
   import { buttonVariants } from '$lib/components/ui/button/button.svelte';
   import { GithubLogo, ArrowUpRight } from 'phosphor-svelte';
   import { Link } from '@inertiajs/svelte';
